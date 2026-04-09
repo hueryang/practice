@@ -11,11 +11,10 @@ import (
 func NewRootCmd() *cobra.Command {
 	root := &cobra.Command{
 		Use:           "meetingreport",
-		Short:         "Meeting minutes utilities: read files and (later) generate image reports",
-		Long:          "会议纪要工具：read 打印原文；extract 使用智谱 BigModel 提取主题、结论、待办等并输出到标准输出。API Key 请设置环境变量 BIGMODEL_API_KEY（或 ZHIPU_API_KEY）。",
+		Short:         "从会议纪要生成结构化 PNG 报告",
+		Long:          "使用智谱 BigModel 从纪要文本提取主题、结论、待办等，并在当前目录写入 PNG 图片。API Key 请设置环境变量 BIGMODEL_API_KEY（或 ZHIPU_API_KEY）。中文字体可通过 MEETING_REPORT_FONT 指定。",
 		SilenceErrors: true,
 	}
-	root.AddCommand(newReadCmd())
 	root.AddCommand(newExtractCmd())
 	return root
 }

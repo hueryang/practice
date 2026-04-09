@@ -14,7 +14,7 @@ func TestExecuteWithArgs_LogsErrorOnMissingFile(t *testing.T) {
 	t.Cleanup(func() { slog.SetDefault(prev) })
 	slog.SetDefault(slog.New(slog.NewTextHandler(&buf, &slog.HandlerOptions{Level: slog.LevelError})))
 
-	code := ExecuteWithArgs([]string{"read", filepath.Join(t.TempDir(), "missing.txt")})
+	code := ExecuteWithArgs([]string{"extract", filepath.Join(t.TempDir(), "missing.txt")})
 	if code != 1 {
 		t.Fatalf("exit code: got %d want 1", code)
 	}
